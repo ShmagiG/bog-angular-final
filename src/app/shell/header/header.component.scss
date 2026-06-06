@@ -1,0 +1,32 @@
+.shell-header {
+  height: var(--header-height);
+  background: #fff;
+  border-bottom: 1px solid var(--bog-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-shrink: 0;
+
+  .page-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--bog-text);
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .user-name {
+      font-size: 13px;
+      color: var(--bog-text-light);
+    }
+  }
+}
+
+.btn-sm {
+  padding: 5px 14px !important;
+  font-size: 12px !important;
+}

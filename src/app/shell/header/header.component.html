@@ -1,0 +1,11 @@
+<header class="shell-header">
+  <div class="header-left">
+    <span class="page-title">მთავარი</span>
+  </div>
+  <div class="header-right">
+    <span class="user-name" *ngIf="user">{{ user.name }}</span>
+    <button class="btn-bog btn-sm" (click)="logout()">
+      გასვლა
+    </button>
+  </div>
+</header>

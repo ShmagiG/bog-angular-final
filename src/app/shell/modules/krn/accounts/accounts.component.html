@@ -1,0 +1,19 @@
+<div class="page-card" style="padding:0; overflow:hidden">
+  <div class="acc-title">ანგარიშები</div>
+  <div class="segment-header">
+    <span>ანგარიშები</span>
+    <button class="btn-add" (click)="goCreate()">+</button>
+  </div>
+  <table class="bog-table">
+    <thead><tr><th>მფლობელი</th><th>სახელი</th><th>თანხა</th><th></th></tr></thead>
+    <tbody>
+      <tr *ngFor="let a of accounts" class="no-click">
+        <td>{{a.ownerName}}</td>
+        <td>{{a.accountName}}</td>
+        <td>{{a.balance | number:'1.2-2'}}</td>
+        <td><button class="del-btn" (click)="delete(a); $event.stopPropagation()">🗑</button></td>
+      </tr>
+      <tr *ngIf="!accounts.length && !loading"><td colspan="4" class="no-data">ანგარიში არ მოიძებნა</td></tr>
+    </tbody>
+  </table>
+</div>

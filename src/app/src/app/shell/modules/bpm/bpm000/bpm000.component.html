@@ -1,0 +1,77 @@
+<div class="bpm000-page">
+
+  <!-- Page title -->
+  <h2 class="page-title">კლიენტის ძებნა</h2>
+
+  <!-- Search segment -->
+  <div class="search-segment">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()" novalidate>
+      <div class="search-inputs">
+        <input
+          type="text"
+          class="search-input"
+          formControlName="firstName"
+          placeholder="სახელი"
+        />
+        <input
+          type="text"
+          class="search-input"
+          formControlName="lastName"
+          placeholder="გვარი"
+        />
+        <input
+          type="text"
+          class="search-input"
+          formControlName="clientNumber"
+          placeholder="კლიენტის უნიკალური"
+        />
+      </div>
+      <div class="search-action-row">
+        <button type="submit" class="btn-search" [disabled]="loading">
+          <span *ngIf="!loading">&#128269;</span>
+          <span *ngIf="loading" class="spinner"></span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Results segment -->
+  <div class="results-segment" *ngIf="searched || clients.length > 0">
+
+    <div class="results-header">
+      <span class="results-label">კლიენტები</span>
+      <button class="btn-add" (click)="onRegister()" title="კლიენტის რეგისტრაცია">
+        &#43;
+      </button>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrapper">
+      <table class="clients-table">
+        <thead>
+          <tr>
+            <th *ngFor="let col of columns">{{ col.label }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let client of clients"
+            class="client-row"
+            (click)="onRowClick(client)"
+          >
+            <td>{{ client.firstName }}</td>
+            <td>{{ client.lastName }}</td>
+            <td>{{ client.clientNumber }}</td>
+          </tr>
+          <tr *ngIf="clients.length === 0 && searched">
+            <td [attr.colspan]="columns.length" class="no-results">
+              კლიენტი ვერ მოიძებნა
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>

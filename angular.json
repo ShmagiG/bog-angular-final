@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "bog-auth": {
+    "mini-bog": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -22,9 +22,9 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular/build:application",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/bog-auth",
+            "outputPath": "dist/mini-bog",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -41,7 +41,17 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "optimization": {
+              "fonts": {
+                "inline": false
+              },
+              "scripts": true,
+              "styles": {
+                "minify": true,
+                "inlineCritical": false
+              }
+            }
           },
           "configurations": {
             "production": {
@@ -68,22 +78,22 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "bog-auth:build:production"
+              "buildTarget": "mini-bog:build:production"
             },
             "development": {
-              "buildTarget": "bog-auth:build:development"
+              "buildTarget": "mini-bog:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular/build:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
               "zone.js",

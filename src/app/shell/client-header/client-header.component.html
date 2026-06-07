@@ -1,0 +1,22 @@
+<div class="client-header" *ngIf="isActive">
+  <div class="ch-top">
+    <img class="ch-photo"
+      [src]="client?.photoUrl || 'https://picsum.photos/seed/' + client?.id + '/70/70'"
+      [alt]="client?.firstName"/>
+    <div class="ch-info">
+      <div class="ch-name">{{client?.firstName}} {{client?.lastName}}</div>
+      <div class="ch-code">უნიკალური კოდი: {{client?.clientNumber ?? client?.id}}</div>
+    </div>
+    <div class="ch-meta">
+      <div class="ch-assets-label">აქტივები:</div>
+      <div class="ch-assets">{{assets | number:'1.2-2'}} GEL</div>
+      <div class="ch-plus">Plus: {{client?.plusPoints}}</div>
+    </div>
+    <button class="btn-red ch-close" (click)="closeClient()">გასვლა</button>
+  </div>
+  <div class="ch-nav">
+    <a [routerLink]="['/krn/krnicp']" [class.active]="isRouteActive('krnicp')">მთავარი</a>
+    <a [routerLink]="['/krn/accounts']" [class.active]="isRouteActive('accounts')">ანგარიშები</a>
+    <a [routerLink]="['/krn/operations']" [class.active]="isRouteActive('operations') || isRouteActive('pmd')">ოპერაციები</a>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+.shell-header {
+  height: var(--header-height);
+  background: #fff;
+  border-bottom: 1px solid var(--bog-border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  flex-shrink: 0;
+
+  /* ── Left: BOG logo ── */
+  .header-left {
+    flex-shrink: 0;
+
+    .bog-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.15;
+
+        .geo {
+          font-size: 10px;
+          font-weight: 700;
+          color: var(--bog-text);
+          white-space: nowrap;
+        }
+
+        .eng {
+          font-size: 7px;
+          color: var(--bog-text-light);
+          letter-spacing: 0.5px;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  /* ── Center: search ── */
+  .header-center {
+    flex: 1;
+
+    .header-search-input {
+      width: 100%;
+      max-width: 320px;
+      padding: 5px 10px;
+      border: 1px solid var(--bog-border);
+      border-radius: 3px;
+      font-size: 13px;
+      outline: none;
+      background: #fafafa;
+
+      &:focus {
+        border-color: var(--bog-orange);
+      }
+    }
+  }
+
+  /* ── Right: date + icons ── */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+
+    .header-date {
+      font-size: 11px;
+      color: var(--bog-text-light);
+      white-space: nowrap;
+
+      .date-label {
+        margin-right: 4px;
+      }
+
+      .date-value {
+        color: var(--bog-text);
+        font-weight: 600;
+      }
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+
+      .icon-btn {
+        width: 28px;
+        height: 28px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--bog-text-light);
+        transition: background 0.15s, color 0.15s;
+
+        &:hover {
+          background: rgba(232, 80, 26, 0.1);
+          color: var(--bog-orange);
+        }
+      }
+    }
+  }
+}

@@ -1,34 +1,28 @@
 :root {
   --bog-orange: #E8501A;
-  --bog-orange-light: #f06030;
-  --bog-orange-dark: #c43e12;
-  --bog-gray-bg: #f2f2f2;
-  --bog-border: #d0d0d0;
-  --bog-text: #333333;
-  --bog-text-light: #666666;
+  --bog-orange-dk: #c43e12;
+  --bog-blue: #1a73e8;
   --bog-red: #d32f2f;
-  --bog-white: #ffffff;
-  --sidebar-width: 240px;
-  --header-height: 60px;
+  --bog-green: #388e3c;
+  --bog-border: #d0d0d0;
+  --bog-bg: #f2f2f2;
+  --bog-text: #333;
+  --bog-text-light: #666;
+  --bog-white: #fff;
+  --sidebar-width: 220px;
+  --header-height: 52px;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
   color: var(--bog-text);
-  background: var(--bog-gray-bg);
-  font-size: 14px;
+  background: var(--bog-bg);
 }
 
-/* =============================================
-   GLOBAL FORM FIELD ERROR HANDLING
-   Red border automatically on invalid+touched
-   ============================================= */
+/* ── Global: red border on invalid+touched inputs ── */
 input.ng-invalid.ng-touched,
 select.ng-invalid.ng-touched {
   border-color: var(--bog-red) !important;
@@ -40,34 +34,68 @@ select.ng-invalid.ng-touched {
   font-size: 11px;
   margin-top: 3px;
   display: block;
-  min-height: 16px;
 }
 
-/* =============================================
-   BUTTONS
-   ============================================= */
+/* ── Buttons ── */
 .btn-bog {
   background: var(--bog-orange);
   color: #fff;
   border: none;
-  padding: 8px 20px;
+  padding: 7px 18px;
   border-radius: 3px;
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  transition: background 0.2s;
+  gap: 5px;
+  transition: background .2s;
+  &:hover { background: var(--bog-orange-dk); }
+  &:disabled { opacity: .6; cursor: not-allowed; }
+}
 
-  &:hover {
-    background: var(--bog-orange-dark);
-  }
+.btn-blue {
+  background: var(--bog-blue);
+  color: #fff;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background .2s;
+  &:hover { background: #1557b0; }
+  &:disabled { opacity: .6; cursor: not-allowed; }
+}
 
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
+.btn-green {
+  background: var(--bog-green);
+  color: #fff;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background .2s;
+  &:hover { background: #2e7031; }
+  &:disabled { opacity: .6; cursor: not-allowed; }
+}
+
+.btn-red {
+  background: var(--bog-red);
+  color: #fff;
+  border: none;
+  padding: 5px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background .2s;
+  &:hover { background: #b71c1c; }
 }
 
 .btn-link {
@@ -75,160 +103,319 @@ select.ng-invalid.ng-touched {
   border: none;
   color: var(--bog-orange);
   cursor: pointer;
-  font-size: 13px;
-  text-decoration: none;
+  font-size: 12px;
   padding: 0;
+  &:hover { text-decoration: underline; }
+}
 
-  &:hover {
-    text-decoration: underline;
+/* ── Forms ── */
+.page-card {
+  background: #fff;
+  border: 1px solid var(--bog-border);
+  border-radius: 4px;
+  padding: 20px 22px;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--bog-text);
+  margin-bottom: 16px;
+}
+
+.form-field {
+  margin-bottom: 12px;
+  label {
+    display: block;
+    font-size: 11px;
+    color: var(--bog-text-light);
+    margin-bottom: 4px;
+  }
+  input, select {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--bog-border);
+    border-radius: 3px;
+    font-size: 12px;
+    color: var(--bog-text);
+    background: #fff;
+    outline: none;
+    transition: border-color .2s;
+    &:focus { border-color: var(--bog-blue); }
+    &::placeholder { color: #bbb; }
   }
 }
 
-/* =============================================
-   AUTH LAYOUT (full-page split)
-   ============================================= */
+/* ── Auth layout ── */
 .auth-page {
   display: flex;
   min-height: 100vh;
-  background: var(--bog-gray-bg);
-
-  .auth-image-side {
+  .auth-img {
     flex: 1;
-    position: relative;
     overflow: hidden;
+    position: relative;
     min-height: 400px;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.25);
-    }
+    img { width: 100%; height: 100%; object-fit: cover; }
+    &::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,.25); }
   }
-
-  .auth-form-side {
+  .auth-panel {
     width: 320px;
     flex-shrink: 0;
-    background: var(--bog-gray-bg);
-    padding: 30px 28px;
+    background: var(--bog-bg);
+    padding: 28px 24px;
     display: flex;
     flex-direction: column;
-
-    .bog-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 28px;
-
-      img {
-        height: 36px;
-      }
-
-      .logo-text {
-        display: flex;
-        flex-direction: column;
-        line-height: 1.1;
-
-        .geo {
-          font-size: 11px;
-          color: var(--bog-text);
-          font-weight: 600;
-          letter-spacing: 0.5px;
-        }
-
-        .eng {
-          font-size: 9px;
-          color: var(--bog-text-light);
-          letter-spacing: 1px;
-          text-transform: uppercase;
-        }
-      }
-    }
   }
 }
 
-/* =============================================
-   FORM FIELDS
-   ============================================= */
-.form-group {
-  margin-bottom: 14px;
-  position: relative;
-
-  .field-wrapper {
-    position: relative;
+.bog-logo-block {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  .logo-svg { width: 36px; height: 36px; }
+  .logo-text {
     display: flex;
-    align-items: center;
-
-    .field-icon {
-      position: absolute;
-      left: 10px;
-      color: var(--bog-text-light);
-      font-size: 14px;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    input {
-      width: 100%;
-      padding: 8px 10px 8px 32px;
-      border: 1px solid var(--bog-border);
-      border-radius: 3px;
-      background: #fff;
-      font-size: 13px;
-      color: var(--bog-text);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-
-      &::placeholder {
-        color: #bbb;
-      }
-
-      &:focus {
-        border-color: var(--bog-orange);
-        box-shadow: 0 0 0 1px var(--bog-orange);
-      }
-    }
+    flex-direction: column;
+    line-height: 1.15;
+    .geo { font-size: 10px; font-weight: 700; color: var(--bog-text); }
+    .eng { font-size: 7px; color: var(--bog-text-light); letter-spacing: .5px; }
   }
 }
 
-/* =============================================
-   AUTH FOOTER (link row)
-   ============================================= */
+.auth-input-wrap {
+  position: relative;
+  .auth-icon {
+    position: absolute;
+    left: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 13px;
+    color: var(--bog-text-light);
+    pointer-events: none;
+  }
+  input {
+    width: 100%;
+    padding: 7px 10px 7px 30px;
+    border: 1px solid var(--bog-border);
+    border-radius: 3px;
+    font-size: 12px;
+    background: #fff;
+    outline: none;
+    transition: border-color .2s;
+    &:focus { border-color: var(--bog-orange); }
+    &::placeholder { color: #bbb; }
+  }
+}
+
 .auth-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
-/* =============================================
-   SHELL LAYOUT
-   ============================================= */
+/* ── Shell layout ── */
 .shell-wrapper {
   display: flex;
   min-height: 100vh;
-}
-
-/* =============================================
-   RESPONSIVE
-   ============================================= */
-@media (max-width: 640px) {
-  .auth-page {
+  .shell-main {
+    flex: 1;
+    display: flex;
     flex-direction: column;
-
-    .auth-image-side {
-      min-height: 200px;
-      flex: none;
-    }
-
-    .auth-form-side {
-      width: 100%;
+    min-width: 0;
+    .shell-content {
+      flex: 1;
+      padding: 20px 24px;
+      background: var(--bog-bg);
+      overflow-y: auto;
     }
   }
+}
+
+/* ── Shell header ── */
+.shell-header {
+  height: var(--header-height);
+  background: #fff;
+  border-bottom: 1px solid var(--bog-border);
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  width: var(--sidebar-width);
+  background: #fff;
+  border-right: 1px solid var(--bog-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+/* ── Segment (bordered card within page) ── */
+.segment {
+  border: 1px solid var(--bog-border);
+  border-radius: 4px;
+  background: #fff;
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 12px;
+    background: #fafafa;
+    border-bottom: 1px solid var(--bog-border);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--bog-text);
+  }
+}
+
+/* ── Table ── */
+.bog-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  thead tr {
+    background: #ececec;
+    border-bottom: 1px solid var(--bog-border);
+    th { padding: 7px 12px; text-align: left; font-weight: 600; font-size: 11px; color: var(--bog-text); white-space: nowrap; }
+  }
+  tbody tr {
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background .1s;
+    &:hover { background: rgba(232,80,26,.05); }
+    &:last-child { border-bottom: none; }
+    td { padding: 8px 12px; color: var(--bog-text); }
+  }
+  .no-data { text-align: center; padding: 20px; color: var(--bog-text-light); cursor: default !important; }
+}
+
+/* ── Client header ── */
+.client-header {
+  background: #fff;
+  border: 1px solid var(--bog-border);
+  border-radius: 4px;
+  margin-bottom: 16px;
+  .ch-top {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 16px;
+    .ch-photo {
+      width: 70px;
+      height: 70px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .ch-info {
+      flex: 1;
+      .ch-name { font-size: 15px; font-weight: 700; color: var(--bog-text); margin-bottom: 3px; }
+      .ch-code { font-size: 11px; color: var(--bog-text-light); }
+    }
+    .ch-meta {
+      text-align: right;
+      .ch-assets { font-size: 13px; color: var(--bog-orange); font-weight: 700; }
+      .ch-assets-label { font-size: 10px; color: var(--bog-text-light); }
+      .ch-plus { font-size: 12px; color: var(--bog-text); margin-top: 4px; }
+    }
+  }
+  .ch-nav {
+    display: flex;
+    border-top: 1px solid var(--bog-border);
+    a {
+      flex: 1;
+      text-align: center;
+      padding: 8px 0;
+      font-size: 12px;
+      color: var(--bog-text);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: all .15s;
+      &:hover { background: rgba(232,80,26,.05); color: var(--bog-orange); }
+      &.active { border-bottom-color: var(--bog-orange); color: var(--bog-orange); font-weight: 600; }
+    }
+  }
+}
+
+/* ── Add button ── */
+.btn-add {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--bog-border);
+  background: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bog-text);
+  transition: all .15s;
+  &:hover { background: var(--bog-orange); border-color: var(--bog-orange); color: #fff; }
+}
+
+/* ── Operations card ── */
+.op-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 90px;
+  border: 1px solid var(--bog-border);
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--bog-text);
+  transition: all .15s;
+  gap: 6px;
+  &:hover { border-color: var(--bog-blue); color: var(--bog-blue); background: rgba(26,115,232,.04); }
+  .op-icon { font-size: 22px; }
+}
+
+/* ── Spinner ── */
+.spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255,255,255,.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Icon btn (header) ── */
+.icon-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bog-text-light);
+  transition: background .15s, color .15s;
+  &:hover { background: rgba(232,80,26,.1); color: var(--bog-orange); }
+}
+
+/* ── Delete icon btn in table ── */
+.del-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--bog-text-light);
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: 3px;
+  &:hover { color: var(--bog-red); background: rgba(211,47,47,.08); }
 }

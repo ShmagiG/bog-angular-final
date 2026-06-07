@@ -1,0 +1,36 @@
+<nav class="sidebar">
+  <!-- User profile block -->
+  <div class="sidebar-profile">
+    <div class="profile-avatar">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <defs>
+          <clipPath id="circleClip">
+            <circle cx="30" cy="30" r="28"/>
+          </clipPath>
+        </defs>
+        <rect x="2" y="2" width="56" height="56" rx="28" fill="#c0c0c0"/>
+        <circle cx="30" cy="24" r="11" fill="#fff" opacity="0.8"/>
+        <ellipse cx="30" cy="52" rx="19" ry="14" fill="#fff" opacity="0.8"/>
+      </svg>
+    </div>
+    <div class="profile-info">
+      <span class="profile-name">{{ user?.name || 'მომხმარებელი' }}</span>
+      <span class="profile-role">TEST</span>
+    </div>
+  </div>
+
+  <!-- Nav items -->
+  <ul class="nav-list">
+    <li>
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}"
+        class="nav-item"
+      >
+        <span class="nav-icon">&#127968;</span>
+        <span>მთავარი</span>
+      </a>
+    </li>
+  </ul>
+</nav>

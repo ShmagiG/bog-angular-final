@@ -1,0 +1,40 @@
+<header class="shell-header">
+
+  <!-- Left: BOG Logo -->
+  <div class="header-left">
+    <div class="bog-logo">
+      <svg width="28" height="28" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="28" fill="#E8501A"/>
+        <text x="30" y="36" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="serif">BOG</text>
+      </svg>
+      <div class="logo-text">
+        <span class="geo">საქართველოს ბანკი</span>
+        <span class="eng">BANK OF GEORGIA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Center: search bar placeholder -->
+  <div class="header-center">
+    <div class="header-search">
+      <input type="text" placeholder="" class="header-search-input" />
+    </div>
+  </div>
+
+  <!-- Right: icons + date + logout -->
+  <div class="header-right">
+    <div class="header-date">
+      <span class="date-label">დასაქმების თარიღი:</span>
+      <span class="date-value">{{ today }}</span>
+    </div>
+    <div class="header-icons">
+      <button class="icon-btn" title="ძებნა">&#128269;</button>
+      <button class="icon-btn" title="შეტყობინება">&#128179;</button>
+      <button class="icon-btn" title="ფოსტა">&#9993;</button>
+      <button class="icon-btn" title="სტატუსი">&#128276;</button>
+      <button class="icon-btn" title="მენიუ">&#9776;</button>
+      <button class="icon-btn" title="გასვლა" (click)="logout()">&#128100;</button>
+    </div>
+  </div>
+
+</header>

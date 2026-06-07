@@ -1,0 +1,21 @@
+<header class="shell-header">
+  <div class="sh-logo">
+    <svg width="26" height="26" viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#E8501A"/><text x="30" y="36" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="serif">BOG</text></svg>
+    <div class="sh-logo-text">
+      <span class="geo">საქართველოს ბანკი</span>
+      <span class="eng">BANK OF GEORGIA</span>
+    </div>
+  </div>
+  <div class="sh-center"><input type="text" class="sh-search" placeholder=""/></div>
+  <div class="sh-right">
+    <span class="sh-date">სარეგისტრაციო თარიღი: <b>{{today}}</b></span>
+    <div class="sh-icons">
+      <button class="icon-btn">🔍</button>
+      <button class="icon-btn">💳</button>
+      <button class="icon-btn">✉</button>
+      <button class="icon-btn">🔔</button>
+      <button class="icon-btn">☰</button>
+      <button class="icon-btn" (click)="logout()" title="გასვლა">👤</button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,234 @@
+:root {
+  --bog-orange: #E8501A;
+  --bog-orange-light: #f06030;
+  --bog-orange-dark: #c43e12;
+  --bog-gray-bg: #f2f2f2;
+  --bog-border: #d0d0d0;
+  --bog-text: #333333;
+  --bog-text-light: #666666;
+  --bog-red: #d32f2f;
+  --bog-white: #ffffff;
+  --sidebar-width: 240px;
+  --header-height: 60px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--bog-text);
+  background: var(--bog-gray-bg);
+  font-size: 14px;
+}
+
+/* =============================================
+   GLOBAL FORM FIELD ERROR HANDLING
+   Red border automatically on invalid+touched
+   ============================================= */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: var(--bog-red) !important;
+  box-shadow: 0 0 0 1px var(--bog-red) !important;
+}
+
+.field-error {
+  color: var(--bog-red);
+  font-size: 11px;
+  margin-top: 3px;
+  display: block;
+  min-height: 16px;
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn-bog {
+  background: var(--bog-orange);
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: var(--bog-orange-dark);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--bog-orange);
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: none;
+  padding: 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* =============================================
+   AUTH LAYOUT (full-page split)
+   ============================================= */
+.auth-page {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bog-gray-bg);
+
+  .auth-image-side {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+    }
+  }
+
+  .auth-form-side {
+    width: 320px;
+    flex-shrink: 0;
+    background: var(--bog-gray-bg);
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+
+    .bog-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+
+      img {
+        height: 36px;
+      }
+
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+
+        .geo {
+          font-size: 11px;
+          color: var(--bog-text);
+          font-weight: 600;
+          letter-spacing: 0.5px;
+        }
+
+        .eng {
+          font-size: 9px;
+          color: var(--bog-text-light);
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+/* =============================================
+   FORM FIELDS
+   ============================================= */
+.form-group {
+  margin-bottom: 14px;
+  position: relative;
+
+  .field-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .field-icon {
+      position: absolute;
+      left: 10px;
+      color: var(--bog-text-light);
+      font-size: 14px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px 10px 8px 32px;
+      border: 1px solid var(--bog-border);
+      border-radius: 3px;
+      background: #fff;
+      font-size: 13px;
+      color: var(--bog-text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+
+      &::placeholder {
+        color: #bbb;
+      }
+
+      &:focus {
+        border-color: var(--bog-orange);
+        box-shadow: 0 0 0 1px var(--bog-orange);
+      }
+    }
+  }
+}
+
+/* =============================================
+   AUTH FOOTER (link row)
+   ============================================= */
+.auth-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+/* =============================================
+   SHELL LAYOUT
+   ============================================= */
+.shell-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 640px) {
+  .auth-page {
+    flex-direction: column;
+
+    .auth-image-side {
+      min-height: 200px;
+      flex: none;
+    }
+
+    .auth-form-side {
+      width: 100%;
+    }
+  }
+}

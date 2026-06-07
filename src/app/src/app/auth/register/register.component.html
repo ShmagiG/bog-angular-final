@@ -1,0 +1,108 @@
+<div class="auth-page">
+  <!-- Left: Bank of Georgia image -->
+  <div class="auth-image-side">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/BOG_Head_Office.jpg/1280px-BOG_Head_Office.jpg"
+      alt="Bank of Georgia"
+    />
+  </div>
+
+  <!-- Right: Register form -->
+  <div class="auth-form-side">
+    <!-- BOG Logo -->
+    <div class="bog-logo">
+      <svg width="40" height="40" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="28" fill="#E8501A"/>
+        <text x="30" y="36" text-anchor="middle" fill="white" font-size="16" font-weight="bold" font-family="serif">BOG</text>
+      </svg>
+      <div class="logo-text">
+        <span class="geo">საქართველოს ბანკი</span>
+        <span class="eng">BANK OF GEORGIA</span>
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+      <!-- Name -->
+      <div class="form-group">
+        <div class="field-wrapper">
+          <span class="field-icon">&#9995;</span>
+          <input
+            type="text"
+            formControlName="name"
+            placeholder="სახელი"
+            autocomplete="name"
+          />
+        </div>
+        <span class="field-error" *ngIf="name.invalid && name.touched">
+          {{ getNameError() }}
+        </span>
+      </div>
+
+      <!-- Username -->
+      <div class="form-group">
+        <div class="field-wrapper">
+          <span class="field-icon">&#128100;</span>
+          <input
+            type="text"
+            formControlName="username"
+            placeholder="მომხმარებელი"
+            autocomplete="username"
+          />
+        </div>
+        <span class="field-error" *ngIf="username.invalid && username.touched">
+          {{ getUsernameError() }}
+        </span>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <div class="field-wrapper">
+          <span class="field-icon">&#128274;</span>
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="პაროლი"
+            autocomplete="new-password"
+          />
+        </div>
+        <span class="field-error" *ngIf="password.invalid && password.touched">
+          {{ getPasswordError() }}
+        </span>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <div class="field-wrapper">
+          <span class="field-icon">&#128274;</span>
+          <input
+            type="password"
+            formControlName="confirmPassword"
+            placeholder="პაროლის გამეორება"
+            autocomplete="new-password"
+            [class.ng-invalid]="isConfirmInvalid()"
+            [class.ng-touched]="confirmPassword.touched"
+          />
+        </div>
+        <span class="field-error" *ngIf="isConfirmInvalid()">
+          {{ getConfirmPasswordError() }}
+        </span>
+      </div>
+
+      <!-- Server error -->
+      <div class="field-error" *ngIf="serverError" style="margin-bottom:10px">
+        {{ serverError }}
+      </div>
+
+      <!-- Footer: Login link + Submit -->
+      <div class="auth-footer">
+        <a routerLink="/auth/login" class="btn-link">შესვლა</a>
+        <button type="submit" class="btn-bog" [disabled]="loading">
+          <span *ngIf="!loading">&#10003; რეგისტრაცია</span>
+          <span *ngIf="loading">გთხოვთ დაელოდოთ...</span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

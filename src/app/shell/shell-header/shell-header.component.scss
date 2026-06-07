@@ -1,0 +1,13 @@
+.sh-logo { display:flex; align-items:center; gap:7px; flex-shrink:0;
+  .sh-logo-text { display:flex; flex-direction:column; line-height:1.15;
+    .geo { font-size:9px; font-weight:700; color:var(--bog-text); }
+    .eng { font-size:6.5px; color:var(--bog-text-light); letter-spacing:.5px; }
+  }
+}
+.sh-center { flex:1; padding:0 16px;
+  .sh-search { width:100%; max-width:260px; padding:4px 8px; border:1px solid var(--bog-border); border-radius:3px; font-size:11px; background:#fafafa; outline:none; }
+}
+.sh-right { display:flex; align-items:center; gap:10px; flex-shrink:0;
+  .sh-date { font-size:10px; color:var(--bog-text-light); white-space:nowrap; b { color:var(--bog-text); } }
+  .sh-icons { display:flex; gap:2px; }
+}

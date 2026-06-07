@@ -1,0 +1,45 @@
+.dashboard {
+  .dashboard-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--bog-text);
+  }
+
+  .dashboard-sub {
+    color: var(--bog-text-light);
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--bog-border);
+      border-radius: 6px;
+      padding: 20px;
+      text-align: center;
+
+      .card-icon {
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+
+      .card-label {
+        font-size: 12px;
+        color: var(--bog-text-light);
+        margin-bottom: 6px;
+      }
+
+      .card-value {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--bog-orange);
+      }
+    }
+  }
+}
